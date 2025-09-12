@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [vue()],
   build: {
     lib: {
-      entry: 'src/index.ts',
+      entry: 'src/index.js',
       name: 'VueAuthWidgets',
       fileName: (format) => `vue-auth-widgets.${format}.js`,
     },
