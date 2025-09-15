@@ -36,8 +36,18 @@ import { useVuelidate } from '@vuelidate/core'
 import { required, email } from '@vuelidate/validators'
 
 
-const API_KEY_CHANGE_EMIT = 'api-key-change'
+const props = defineProps({
+    productName: {
+        type: String,
+        required: true
+    },
+    baseUrl: {
+        type: String,
+        required: true
+    }
+});
 
+const API_KEY_CHANGE_EMIT = 'api-key-change'
 const emit = defineEmits([API_KEY_CHANGE_EMIT]);
 
 const errorMessage = ref('')
@@ -64,16 +74,15 @@ const login = async (event) => {
 
     const payload = {
         "credentials.email": user.value.email,
-        "credentials.product": `${import.meta.env.VITE_PRODUCT_NAME}`,
+        "credentials.product": props.productName,
         password: user.value.password
     };
 
     try {
-        const baseUrl = import.meta.env.VITE_API_BASE;
         let response;
         let apiKey;
 
-        response = await axios.get(`${baseUrl}/user?where=${encodeURIComponent(JSON.stringify(payload))}`);
+        response = await axios.get(`${props.baseUrl}/user?where=${encodeURIComponent(JSON.stringify(payload))}`);
 
         if (!response.data._items || response.data._items.length === 0) {
             errorMessage.value = 'Invalid login';

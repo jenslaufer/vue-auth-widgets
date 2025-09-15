@@ -58,8 +58,18 @@ import { useVuelidate } from '@vuelidate/core'
 import { required, email, minLength } from '@vuelidate/validators'
 
 
-const API_KEY_CHANGE_EMIT = 'api-key-change'
+const props = defineProps({
+    productName: {
+        type: String,
+        required: true
+    },
+    baseUrl: {
+        type: String,
+        required: true
+    }
+});
 
+const API_KEY_CHANGE_EMIT = 'api-key-change'
 const emit = defineEmits([API_KEY_CHANGE_EMIT]);
 
 const errorMessage = ref('')
@@ -93,19 +103,18 @@ const register = async (event) => {
 
     const payload = {
         "credentials.email": user.value.email,
-        "credentials.product": `${import.meta.env.VITE_PRODUCT_NAME}`,
+        "credentials.product": props.productName,
         password: user.value.password,
         ...{ key: key.value }
     };
 
     try {
-        const baseUrl = import.meta.env.VITE_API_BASE;
         let apiKey;
 
         payload.firstname = user.value.firstName;
         payload.lastname = user.value.lastName;
 
-        await axios.post(`${baseUrl}/user`, payload, {
+        await axios.post(`${props.baseUrl}/user`, payload, {
             headers: { 'Content-Type': 'application/json' }
         });
 
