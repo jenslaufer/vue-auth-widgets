@@ -16,14 +16,14 @@ export default defineConfig({
       fileName: (format) => `vue-auth-widgets.${format}.js`,
     },
     cssCodeSplit: false,
-    rollupOptions: {
-      external: ['vue', 'axios', '@vuelidate/core', '@vuelidate/validators'],
-      output: {
-        globals: {
-          vue: 'Vue',
-          axios: 'axios',
-        },
-      },
-    },
+    // rollupOptions: {
+    //   external: ['vue', 'axios', '@vuelidate/core', '@vuelidate/validators'],
+    //   output: {
+    //     globals: {
+    //       vue: 'Vue',
+    //       axios: 'axios',
+    //     },
+    //   },
+    // },
   },
 })
