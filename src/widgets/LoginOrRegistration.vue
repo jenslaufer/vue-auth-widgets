@@ -1,6 +1,6 @@
 <template>
     <div class="bg-white p-8 rounded-lg w-full max-w-2xl">
-        <login-form v-if="isLogin" :product-name="productName" :base-url="baseUrl"
+        <login-form v-if="isLogin" :product-name="productName" :base-url="baseUrl" :button-class="loginButtonClass"
             @api-key-change="propagateApiKeyChange" />
         <registration-form v-else :product-name="productName" :base-url="baseUrl"
             @api-key-change="propagateApiKeyChange" />
@@ -30,6 +30,10 @@ const props = defineProps({
     baseUrl: {
         type: String,
         required: true
+    },
+    loginButtonClass: {
+        type: String,
+        required: false
     }
 });
 

@@ -25,8 +25,7 @@
             </div>
         </div>
     </div>
-    <button @click="login" :disabled="$v.$invalid"
-        class="w-full bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 disabled:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Login</button>
+    <button @click="login" :disabled="$v.$invalid" :class="buttonClass">Login</button>
 
 </template>
 <script setup>
@@ -44,6 +43,11 @@ const props = defineProps({
     baseUrl: {
         type: String,
         required: true
+    },
+    buttonClass: {
+        type: String,
+        required: false,
+        default: 'w-full bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 disabled:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
     }
 });
 
