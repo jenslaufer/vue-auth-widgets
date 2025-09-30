@@ -1,11 +1,11 @@
 <template>
 
     <h2 class="text-2xl font-bold mb-6 text-center">Registration</h2>
-    <p v-if="errorMessage" :class="errorClass">{{ errorMessage }}</p>
+    <p v-if="errorMessage" :class="errorMessageClass">{{ errorMessage }}</p>
     <div class="mb-4">
         <label for="firstName" :class="labelClass">First Name</label>
         <input type="text" id="firstName" v-model="user.firstName" :class="inputClass" required>
-        <div v-if="$v.firstName.$errors.length" :class="errorClass">
+        <div v-if="$v.firstName.$errors.length" :class="errorMessageClass">
             <div v-for="error in $v.firstName.$errors" :key="error.$uid">
                 {{ error.$message }}
             </div>
@@ -14,7 +14,7 @@
     <div class="mb-4">
         <label for="lastName" :class="labelClass">Last Name</label>
         <input type="text" id="lastName" v-model="user.lastName" :class="inputClass" required>
-        <div v-if="$v.lastName.$errors.length" :class="errorClass">
+        <div v-if="$v.lastName.$errors.length" :class="errorMessageClass">
             <div v-for="error in $v.lastName.$errors" :key="error.$uid">
                 {{ error.$message }}
             </div>
@@ -23,7 +23,7 @@
     <div class="mb-4">
         <label for="email" :class="labelClass">Email</label>
         <input type="email" id="email" v-model="user.email" :class="inputClass" required>
-        <div v-if="$v.email.$errors.length" :class="errorClass">
+        <div v-if="$v.email.$errors.length" :class="errorMessageClass">
             <div v-for="error in $v.email.$errors" :key="error.$uid">
                 {{ error.$message }}
             </div>
@@ -32,7 +32,7 @@
     <div class="mb-6">
         <label for="password" :class="labelClass">Password</label>
         <input type="password" id="password" v-model="user.password" :class="inputClass" required>
-        <div v-if="$v.password.$errors.length" :class="errorClass">
+        <div v-if="$v.password.$errors.length" :class="errorMessageClass">
             <div v-for="error in $v.password.$errors" :key="error.$uid">
                 {{ error.$message }}
             </div>
