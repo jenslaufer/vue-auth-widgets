@@ -1,31 +1,25 @@
 <template>
     <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
-    <p v-if="errorMessage" class="text-red-500 mt-1">{{ errorMessage }}</p>
-
-
+    <p v-if="errorMessage" :class="errorMessageClass">{{ errorMessage }}</p>
     <div class="mb-4">
-        <label for="email" class="block text-gray-700 font-semibold">Email</label>
-        <input type="email" id="email" v-model="user.email"
-            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            required>
-        <div v-if="$v.email.$errors.length" class="text-red-500 text-sm mt-1 font-semibold">
+        <label for="email" :class="labelClass">Email</label>
+        <input type="email" id="email" v-model="user.email" :class="inputClass" required>
+        <div v-if="$v.email.$errors.length" :class="errorMessageClass">
             <div v-for="error in $v.email.$errors" :key="error.$uid">
                 {{ error.$message }}
             </div>
         </div>
     </div>
     <div class="mb-6">
-        <label for="password" class="block text-gray-700 font-semibold">Password</label>
-        <input type="password" id="password" v-model="user.password"
-            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            required>
-        <div v-if="$v.password.$errors.length" class="text-red-500 text-sm mt-1 font-semibold">
+        <label for="password" :class="labelClass">Password</label>
+        <input type="password" id="password" v-model="user.password" :class="inputClass" required>
+        <div v-if="$v.password.$errors.length" :class="errorMessageClass">
             <div v-for="error in $v.password.$errors" :key="error.$uid">
                 {{ error.$message }}
             </div>
         </div>
     </div>
-    <button @click="login" :disabled="$v.$invalid" :class="buttonClass">Login</button>
+    <button @click="login" :disabled="$v.$invalid" :class="buttonClass">{{ buttonLabel }}</button>
 
 </template>
 <script setup>
@@ -46,9 +40,24 @@ const props = defineProps({
     },
     buttonClass: {
         type: String,
-        required: false,
-        default: 'w-full bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 disabled:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
-    }
+        required: true
+    },
+    labelClass: {
+        type: String,
+        required: true
+    },
+    inputClass: {
+        type: String,
+        required: true
+    },
+    errorMessageClass: {
+        type: String,
+        required: true
+    },
+    buttonLabel: {
+        type: String,
+        required: true
+    },
 });
 
 const API_KEY_CHANGE_EMIT = 'api-key-change'
