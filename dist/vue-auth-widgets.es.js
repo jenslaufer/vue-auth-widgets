@@ -339,12 +339,12 @@ const D = { class: "mb-4" }, R = { class: "mb-6" }, F = ["disabled"], M = "api-k
     loginButtonLabel: {
       type: String,
       required: !1,
-      default: "Register"
+      default: "Login"
     },
     registrationButtonLabel: {
       type: String,
       required: !1,
-      default: "Login"
+      default: "Register"
     }
   },
   emits: [A],

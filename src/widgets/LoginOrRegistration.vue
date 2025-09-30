@@ -61,12 +61,12 @@ const props = defineProps({
     loginButtonLabel: {
         type: String,
         required: false,
-        default: 'Register'
+        default: 'Login'
     },
     registrationButtonLabel: {
         type: String,
         required: false,
-        default: 'Login'
+        default: 'Register'
     },
 });
 
