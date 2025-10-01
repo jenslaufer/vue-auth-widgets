@@ -1,55 +1,44 @@
 <template>
 
     <h2 class="text-2xl font-bold mb-6 text-center">Registration</h2>
-    <p v-if="errorMessage" class="text-red-500 mt-1">{{ errorMessage }}</p>
-
+    <p v-if="errorMessage" :class="errorMessageClass">{{ errorMessage }}</p>
     <div class="mb-4">
-        <label for="firstName" class="block text-gray-700 font-semibold">First Name</label>
-        <input type="text" id="firstName" v-model="user.firstName"
-            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            required>
-        <div v-if="$v.firstName.$errors.length" class="text-red-500 text-sm mt-1 font-semibold">
+        <label for="firstName" :class="labelClass">First Name</label>
+        <input type="text" id="firstName" v-model="user.firstName" :class="inputClass" required>
+        <div v-if="$v.firstName.$errors.length" :class="errorMessageClass">
             <div v-for="error in $v.firstName.$errors" :key="error.$uid">
                 {{ error.$message }}
             </div>
         </div>
     </div>
     <div class="mb-4">
-        <label for="lastName" class="block text-gray-700 font-semibold">Last Name</label>
-        <input type="text" id="lastName" v-model="user.lastName"
-            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            required>
-        <div v-if="$v.lastName.$errors.length" class="text-red-500 text-sm mt-1 font-semibold">
+        <label for="lastName" :class="labelClass">Last Name</label>
+        <input type="text" id="lastName" v-model="user.lastName" :class="inputClass" required>
+        <div v-if="$v.lastName.$errors.length" :class="errorMessageClass">
             <div v-for="error in $v.lastName.$errors" :key="error.$uid">
                 {{ error.$message }}
             </div>
         </div>
     </div>
     <div class="mb-4">
-        <label for="email" class="block text-gray-700 font-semibold">Email</label>
-        <input type="email" id="email" v-model="user.email"
-            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            required>
-        <div v-if="$v.email.$errors.length" class="text-red-500 text-sm mt-1 font-semibold">
+        <label for="email" :class="labelClass">Email</label>
+        <input type="email" id="email" v-model="user.email" :class="inputClass" required>
+        <div v-if="$v.email.$errors.length" :class="errorMessageClass">
             <div v-for="error in $v.email.$errors" :key="error.$uid">
                 {{ error.$message }}
             </div>
         </div>
     </div>
     <div class="mb-6">
-        <label for="password" class="block text-gray-700 font-semibold">Password</label>
-        <input type="password" id="password" v-model="user.password"
-            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            required>
-        <div v-if="$v.password.$errors.length" class="text-red-500 text-sm mt-1 font-semibold">
+        <label for="password" :class="labelClass">Password</label>
+        <input type="password" id="password" v-model="user.password" :class="inputClass" required>
+        <div v-if="$v.password.$errors.length" :class="errorMessageClass">
             <div v-for="error in $v.password.$errors" :key="error.$uid">
                 {{ error.$message }}
             </div>
         </div>
     </div>
-    <button @click="register" :disabled="$v.$invalid"
-        class="w-full bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 disabled:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Let
-        me in!</button>
+    <button @click="register" :disabled="$v.$invalid" :class="buttonClass">{{ buttonLabel }}</button>
 </template>
 <script setup>
 import { ref, onMounted } from 'vue';
@@ -66,7 +55,27 @@ const props = defineProps({
     baseUrl: {
         type: String,
         required: true
-    }
+    },
+    buttonClass: {
+        type: String,
+        required: true
+    },
+    labelClass: {
+        type: String,
+        required: true
+    },
+    inputClass: {
+        type: String,
+        required: true
+    },
+    errorMessageClass: {
+        type: String,
+        required: true
+    },
+    buttonLabel: {
+        type: String,
+        required: true
+    },
 });
 
 const API_KEY_CHANGE_EMIT = 'api-key-change'
