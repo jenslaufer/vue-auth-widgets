@@ -4,7 +4,7 @@
     <div class="mb-4">
         <label for="email" :class="labelClass">Email</label>
         <input type="email" id="email" v-model="user.email" :class="[`${inputClass}`,
-        v$.password.$errors ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500']" required>
+        $v.email.$errors ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500']" required>
         <div v-if="$v.email.$errors.length" :class="errorMessageClass">
             <div v-for="error in $v.email.$errors" :key="error.$uid">
                 {{ error.$message }}
@@ -14,7 +14,7 @@
     <div class="mb-6">
         <label for="password" :class="labelClass">Password</label>
         <input type="password" id="password" v-model="user.password" :class="[`${inputClass}`,
-        v$.password.$errors ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500']" required>
+        $v.password.$errors ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500']" required>
         <div v-if="$v.password.$errors.length" :class="errorMessageClass">
             <div v-for="error in $v.password.$errors" :key="error.$uid">
                 {{ error.$message }}
