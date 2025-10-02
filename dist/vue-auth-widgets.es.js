@@ -275,7 +275,7 @@ const D = { class: "mb-4" }, R = { class: "mb-6" }, F = ["disabled"], U = "api-k
           "onUpdate:modelValue": s[3] || (s[3] = (t) => n.value.password = t),
           class: i([
             `${e.inputClass}`,
-            o.v$.password.$error ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"
+            o.v$.password.$errors ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"
           ]),
           required: ""
         }, null, 2), [
