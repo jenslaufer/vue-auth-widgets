@@ -82,7 +82,7 @@ const D = { class: "mb-4" }, R = { class: "mb-6" }, F = ["disabled"], U = "api-k
           "onUpdate:modelValue": c[0] || (c[0] = (s) => g.value.email = s),
           class: i([
             `${e.inputClass}`,
-            n(d).email.$errors ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"
+            n(d).email.$error ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"
           ]),
           required: ""
         }, null, 2), [
@@ -108,7 +108,7 @@ const D = { class: "mb-4" }, R = { class: "mb-6" }, F = ["disabled"], U = "api-k
           "onUpdate:modelValue": c[1] || (c[1] = (s) => g.value.password = s),
           class: i([
             `${e.inputClass}`,
-            n(d).password.$errors ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"
+            n(d).password.$error ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"
           ]),
           required: ""
         }, null, 2), [
