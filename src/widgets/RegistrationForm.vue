@@ -31,7 +31,8 @@
     </div>
     <div class="mb-6">
         <label for="password" :class="labelClass">Password</label>
-        <input type="password" id="password" v-model="user.password" :class="inputClass" required>
+        <input type="password" id="password" v-model="user.password" :class="[`${inputClass}`,
+        v$.password.$error ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500']" required>
         <div v-if="$v.password.$errors.length" :class="errorMessageClass">
             <div v-for="error in $v.password.$errors" :key="error.$uid">
                 {{ error.$message }}
