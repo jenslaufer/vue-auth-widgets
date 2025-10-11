@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white p-8 rounded-lg w-full max-w-2xl">
+    <div class="p-8 rounded-lg w-full max-w-2xl">
         <login-form v-if="isLogin" :product-name="productName" :base-url="baseUrl" :button-class="buttonClass"
             :label-class="labelClass" :input-class="inputClass" :error-message-class="errorMessageClass"
             :button-label="loginButtonLabel" @api-key-change="propagateApiKeyChange" />
