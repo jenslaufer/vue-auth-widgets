@@ -63,6 +63,9 @@ const props = defineProps({
     },
 });
 
+const KEY_CHANGE_EMIT = 'key-change'
+const emit = defineEmits([KEY_CHANGE_EMIT]);
+
 const key = ref('')
 const isUnregistered = ref(true)
 
@@ -70,6 +73,7 @@ const apiKeyChange = (obj) => {
     key.value = obj.key
     localStorage.setItem(keyName, key.value)
     isUnregistered.value = false
+    emit(KEY_CHANGE_EMIT, key.value)
 }
 
 onMounted(() => {
