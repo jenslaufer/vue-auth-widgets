@@ -1,6 +1,6 @@
 <template>
     <slot v-if="!isUnregistered" />
-    <login-or-registration v-else :product-name="productName"
+    <login-or-registration v-else :product-name="productName" :base-url="baseUrl"
         input-class="w-full bg-white px-3 py-3 text-2xl border border-gray-400 rounded-md focus:outline-none focus:ring-2"
         button-class="w-full mt-6 text-white text-2xl bg-red-600 disabled:bg-red-400 hover:bg-red-700 focus:bg-red-700 font-semibold py-3 rounded-md shadow-none transition-colors duration-150"
         @api-key-change="apiKeyChange" />
@@ -15,6 +15,10 @@ const props = defineProps({
         required: true
     },
     productName: {
+        type: String,
+        required: true
+    },
+    baseUrl: {
         type: String,
         required: true
     },

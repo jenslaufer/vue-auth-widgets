@@ -422,6 +422,10 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], E = "api-k
       type: String,
       required: !0
     },
+    baseUrl: {
+      type: String,
+      required: !0
+    },
     linkClass: {
       type: String,
       required: !1,
@@ -474,10 +478,11 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], E = "api-k
     }), (i, d) => o.value ? (r(), L(_, {
       key: 1,
       "product-name": e.productName,
+      "base-url": e.baseUrl,
       "input-class": "w-full bg-white px-3 py-3 text-2xl border border-gray-400 rounded-md focus:outline-none focus:ring-2",
       "button-class": "w-full mt-6 text-white text-2xl bg-red-600 disabled:bg-red-400 hover:bg-red-700 focus:bg-red-700 font-semibold py-3 rounded-md shadow-none transition-colors duration-150",
       onApiKeyChange: m
-    }, null, 8, ["product-name"])) : D(i.$slots, "default", { key: 0 });
+    }, null, 8, ["product-name", "base-url"])) : D(i.$slots, "default", { key: 0 });
   }
 };
 export {
