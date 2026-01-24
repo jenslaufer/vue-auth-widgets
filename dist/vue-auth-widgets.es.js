@@ -411,7 +411,7 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], E = "api-k
       ])
     ]));
   }
-}, B = "key-change", ae = {
+}, B = "api-key-change", ae = {
   __name: "Registered",
   props: {
     keyName: {

@@ -63,7 +63,7 @@ const props = defineProps({
     },
 });
 
-const KEY_CHANGE_EMIT = 'key-change'
+const KEY_CHANGE_EMIT = 'api-key-change'
 const emit = defineEmits([KEY_CHANGE_EMIT]);
 
 const key = ref('')
