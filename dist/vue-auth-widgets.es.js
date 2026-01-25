@@ -2,7 +2,7 @@
 import { ref as C, onMounted as M, openBlock as r, createElementBlock as a, Fragment as p, createElementVNode as l, normalizeClass as n, toDisplayString as f, createCommentVNode as v, withDirectives as w, unref as u, vModelText as N, renderList as q, createBlock as L, createTextVNode as U, renderSlot as D } from "vue";
 import B from "axios";
 import { useVuelidate as V } from "@vuelidate/core";
-import { required as x, email as R, minLength as S } from "@vuelidate/validators";
+import { required as h, email as R, minLength as S } from "@vuelidate/validators";
 const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], E = "api-key-change", G = {
   __name: "LoginForm",
   props: {
@@ -41,11 +41,11 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], E = "api-k
       email: "",
       password: ""
     }), d = V({
-      email: { required: x, email: R },
-      password: { required: x }
+      email: { required: h, email: R },
+      password: { required: h }
     }, m), g = (k) => {
       c(E, { key: k });
-    }, h = async (k) => {
+    }, x = async (k) => {
       k.preventDefault(), o.value = "";
       const b = {
         "credentials.email": m.value.email,
@@ -54,13 +54,13 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], E = "api-k
       };
       try {
         let t, s;
-        if (t = await B.get(`${y.baseUrl}/user?where=${encodeURIComponent(JSON.stringify(b))}`), !t.data._items || t.data._items.length === 0) {
+        if (console.log(`${y.baseUrl}/user?where=${encodeURIComponent(JSON.stringify(b))}`), t = await B.get(`${y.baseUrl}/user?where=${encodeURIComponent(JSON.stringify(b))}`), !t.data._items || t.data._items.length === 0) {
           o.value = "Invalid login";
           return;
         }
         s = t.data._items[0].key, g(s);
       } catch (t) {
-        o.value = `${t}`;
+        console.error(t), o.value = `${t}`;
       }
     };
     return M(() => {
@@ -124,13 +124,13 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], E = "api-k
         ], 2)) : v("", !0)
       ]),
       l("button", {
-        onClick: h,
+        onClick: x,
         disabled: u(d).$invalid,
         class: n(e.buttonClass)
       }, f(e.buttonLabel), 11, F)
     ], 64));
   }
-}, H = { class: "mb-4" }, Y = { class: "mb-4" }, O = { class: "mb-4" }, j = { class: "mb-6" }, z = ["disabled"], A = "api-key-change", J = {
+}, H = { class: "mb-4" }, Y = { class: "mb-4" }, O = { class: "mb-4" }, J = { class: "mb-6" }, j = ["disabled"], A = "api-key-change", z = {
   __name: "RegistrationForm",
   props: {
     productName: {
@@ -170,11 +170,11 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], E = "api-k
       email: "",
       password: ""
     }), d = {
-      firstName: { required: x, minLength: S(2) },
-      lastName: { required: x, minLength: S(2) },
-      email: { required: x, email: R },
-      password: { required: x, minLength: S(8) }
-    }, g = V(d, i), h = (b) => {
+      firstName: { required: h, minLength: S(2) },
+      lastName: { required: h, minLength: S(2) },
+      email: { required: h, email: R },
+      password: { required: h, minLength: S(8) }
+    }, g = V(d, i), x = (b) => {
       c(A, { key: b });
     }, k = async (b) => {
       b.preventDefault(), o.value = "";
@@ -188,7 +188,7 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], E = "api-k
         let s;
         t.firstname = i.value.firstName, t.lastname = i.value.lastName, await B.post(`${y.baseUrl}/user`, t, {
           headers: { "Content-Type": "application/json" }
-        }), s = t.key, h(s);
+        }), s = t.key, x(s);
       } catch (s) {
         s.response?.status === 422 ? o.value = "User is already registered" : o.value = `${s}`;
       }
@@ -279,7 +279,7 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], E = "api-k
           }, f(s.$message), 1))), 128))
         ], 2)) : v("", !0)
       ]),
-      l("div", j, [
+      l("div", J, [
         l("label", {
           for: "password",
           class: n(e.labelClass)
@@ -309,7 +309,7 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], E = "api-k
         onClick: k,
         disabled: u(g).$invalid,
         class: n(e.buttonClass)
-      }, f(e.buttonLabel), 11, z)
+      }, f(e.buttonLabel), 11, j)
     ], 64));
   }
 }, Q = { class: "p-8 rounded-lg w-full max-w-2xl" }, W = { class: "mt-4 text-center" }, X = {
@@ -318,7 +318,7 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], E = "api-k
 }, Z = {
   key: 1,
   class: "text-gray-700 font-regular"
-}, K = "api-key-change", _ = {
+}, I = "api-key-change", _ = {
   __name: "LoginOrRegistration",
   props: {
     productName: {
@@ -365,10 +365,10 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], E = "api-k
       default: "Register"
     }
   },
-  emits: [K],
+  emits: [I],
   setup(e, { emit: $ }) {
     const y = $, c = C(!0), o = (i) => {
-      y(K, i);
+      y(I, i);
     }, m = () => {
       c.value = !c.value;
     };
@@ -383,7 +383,7 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], E = "api-k
         "error-message-class": e.errorMessageClass,
         "button-label": e.loginButtonLabel,
         onApiKeyChange: o
-      }, null, 8, ["product-name", "base-url", "button-class", "label-class", "input-class", "error-message-class", "button-label"])) : (r(), L(J, {
+      }, null, 8, ["product-name", "base-url", "button-class", "label-class", "input-class", "error-message-class", "button-label"])) : (r(), L(z, {
         key: 1,
         "product-name": e.productName,
         "base-url": e.baseUrl,
@@ -411,7 +411,7 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], E = "api-k
       ])
     ]));
   }
-}, I = "api-key-change", ae = {
+}, K = "api-key-change", ae = {
   __name: "Registered",
   props: {
     keyName: {
@@ -466,10 +466,10 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], E = "api-k
       required: !0
     }
   },
-  emits: [I],
+  emits: [K],
   setup(e, { emit: $ }) {
     const y = $, c = C(""), o = C(!0), m = (i) => {
-      c.value = i.key, localStorage.setItem(keyName, c.value), o.value = !1, y(I, c.value);
+      c.value = i.key, localStorage.setItem(keyName, c.value), o.value = !1, y(K, c.value);
     };
     return M(() => {
       c.value = localStorage.getItem(keyName);
