@@ -96,7 +96,7 @@ const login = async (event) => {
     try {
         let response;
         let apiKey;
-
+        console.log(`${props.baseUrl}/user?where=${encodeURIComponent(JSON.stringify(payload))}`);
         response = await axios.get(`${props.baseUrl}/user?where=${encodeURIComponent(JSON.stringify(payload))}`);
 
         if (!response.data._items || response.data._items.length === 0) {
@@ -108,6 +108,7 @@ const login = async (event) => {
 
         propagateApiKeyChange(apiKey);
     } catch (error) {
+        console.error(error);
         errorMessage.value = `${error}`;
     }
 };
