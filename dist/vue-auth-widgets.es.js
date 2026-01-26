@@ -37,16 +37,16 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], A = "api-k
   },
   emits: [A],
   setup(e, { emit: $ }) {
-    const f = e, y = $, i = C(""), g = C({
+    const f = e, y = $, u = C(""), g = C({
       email: "",
       password: ""
-    }), u = V({
+    }), i = V({
       email: { required: h, email: R },
       password: { required: h }
     }, g), c = (k) => {
       y(A, { key: k });
     }, x = async (k) => {
-      k.preventDefault(), i.value = "";
+      k.preventDefault(), u.value = "";
       const m = {
         "credentials.email": g.value.email,
         "credentials.product": f.productName,
@@ -55,22 +55,22 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], A = "api-k
       try {
         let t, s;
         if (console.log(`${f.baseUrl}/user?where=${encodeURIComponent(JSON.stringify(m))}`), t = await B.get(`${f.baseUrl}/user?where=${encodeURIComponent(JSON.stringify(m))}`), !t.data._items || t.data._items.length === 0) {
-          i.value = "Invalid login";
+          u.value = "Invalid login";
           return;
         }
         s = t.data._items[0].key, c(s);
       } catch (t) {
-        console.error(t), i.value = `${t}`;
+        console.error(t), u.value = `${t}`;
       }
     };
     return U(() => {
-      u.value.$touch();
+      i.value.$touch();
     }), (k, m) => (r(), a(p, null, [
       m[2] || (m[2] = l("h2", { class: "text-2xl font-bold mb-6 text-center" }, "Login", -1)),
-      i.value ? (r(), a("p", {
+      u.value ? (r(), a("p", {
         key: 0,
         class: n(e.errorMessageClass)
-      }, b(i.value), 3)) : v("", !0),
+      }, b(u.value), 3)) : v("", !0),
       l("div", T, [
         l("label", {
           for: "email",
@@ -82,17 +82,17 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], A = "api-k
           "onUpdate:modelValue": m[0] || (m[0] = (t) => g.value.email = t),
           class: n([
             `${e.inputClass}`,
-            o(u).email.$error ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"
+            o(i).email.$error ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"
           ]),
           required: ""
         }, null, 2), [
           [N, g.value.email]
         ]),
-        o(u).email.$errors.length ? (r(), a("div", {
+        o(i).email.$errors.length ? (r(), a("div", {
           key: 0,
           class: n(e.errorMessageClass)
         }, [
-          (r(!0), a(p, null, q(o(u).email.$errors, (t) => (r(), a("div", {
+          (r(!0), a(p, null, q(o(i).email.$errors, (t) => (r(), a("div", {
             key: t.$uid
           }, b(t.$message), 1))), 128))
         ], 2)) : v("", !0)
@@ -108,29 +108,29 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], A = "api-k
           "onUpdate:modelValue": m[1] || (m[1] = (t) => g.value.password = t),
           class: n([
             `${e.inputClass}`,
-            o(u).password.$error ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"
+            o(i).password.$error ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"
           ]),
           required: ""
         }, null, 2), [
           [N, g.value.password]
         ]),
-        o(u).password.$errors.length ? (r(), a("div", {
+        o(i).password.$errors.length ? (r(), a("div", {
           key: 0,
           class: n(e.errorMessageClass)
         }, [
-          (r(!0), a(p, null, q(o(u).password.$errors, (t) => (r(), a("div", {
+          (r(!0), a(p, null, q(o(i).password.$errors, (t) => (r(), a("div", {
             key: t.$uid
           }, b(t.$message), 1))), 128))
         ], 2)) : v("", !0)
       ]),
       l("button", {
         onClick: x,
-        disabled: o(u).$invalid,
+        disabled: o(i).$invalid,
         class: n(e.buttonClass)
       }, b(e.buttonLabel), 11, F)
     ], 64));
   }
-}, H = { class: "mb-4" }, Y = { class: "mb-4" }, O = { class: "mb-4" }, J = { class: "mb-6" }, j = ["disabled"], I = "api-key-change", z = {
+}, H = { class: "mb-4" }, Y = { class: "mb-4" }, O = { class: "mb-4" }, J = { class: "mb-6" }, z = ["disabled"], I = "api-key-change", j = {
   __name: "RegistrationForm",
   props: {
     productName: {
@@ -164,20 +164,20 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], A = "api-k
   },
   emits: [I],
   setup(e, { emit: $ }) {
-    const f = e, y = $, i = C(""), g = C(crypto.randomUUID()), d = C({
+    const f = e, y = $, u = C(""), g = C(crypto.randomUUID()), d = C({
       firstName: "",
       lastName: "",
       email: "",
       password: ""
-    }), u = {
+    }), i = {
       firstName: { required: h, minLength: S(2) },
       lastName: { required: h, minLength: S(2) },
       email: { required: h, email: R },
       password: { required: h, minLength: S(8) }
-    }, c = V(u, d), x = (m) => {
+    }, c = V(i, d), x = (m) => {
       y(I, { key: m });
     }, k = async (m) => {
-      m.preventDefault(), i.value = "";
+      m.preventDefault(), u.value = "";
       const t = {
         "credentials.email": d.value.email,
         "credentials.product": f.productName,
@@ -190,17 +190,17 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], A = "api-k
           headers: { "Content-Type": "application/json" }
         }), s = t.key, x(s);
       } catch (s) {
-        s.response?.status === 422 ? i.value = "User is already registered" : i.value = `${s}`;
+        s.response?.status === 422 ? u.value = "User is already registered" : u.value = `${s}`;
       }
     };
     return U(() => {
       c.value.$touch();
     }), (m, t) => (r(), a(p, null, [
       t[4] || (t[4] = l("h2", { class: "text-2xl font-bold mb-6 text-center" }, "Registration", -1)),
-      i.value ? (r(), a("p", {
+      u.value ? (r(), a("p", {
         key: 0,
         class: n(e.errorMessageClass)
-      }, b(i.value), 3)) : v("", !0),
+      }, b(u.value), 3)) : v("", !0),
       l("div", H, [
         l("label", {
           for: "firstName",
@@ -309,7 +309,7 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], A = "api-k
         onClick: k,
         disabled: o(c).$invalid,
         class: n(e.buttonClass)
-      }, b(e.buttonLabel), 11, j)
+      }, b(e.buttonLabel), 11, z)
     ], 64));
   }
 }, Q = { class: "p-8 rounded-lg w-full max-w-2xl" }, W = { class: "mt-4 text-center" }, X = {
@@ -367,12 +367,12 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], A = "api-k
   },
   emits: [K],
   setup(e, { emit: $ }) {
-    const f = $, y = C(!0), i = (d) => {
+    const f = $, y = C(!0), u = (d) => {
       f(K, d);
     }, g = () => {
       y.value = !y.value;
     };
-    return (d, u) => (r(), a("div", Q, [
+    return (d, i) => (r(), a("div", Q, [
       y.value ? (r(), M(G, {
         key: 0,
         "product-name": e.productName,
@@ -382,8 +382,8 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], A = "api-k
         "input-class": e.inputClass,
         "error-message-class": e.errorMessageClass,
         "button-label": e.loginButtonLabel,
-        onApiKeyChange: i
-      }, null, 8, ["product-name", "base-url", "button-class", "label-class", "input-class", "error-message-class", "button-label"])) : (r(), M(z, {
+        onApiKeyChange: u
+      }, null, 8, ["product-name", "base-url", "button-class", "label-class", "input-class", "error-message-class", "button-label"])) : (r(), M(j, {
         key: 1,
         "product-name": e.productName,
         "base-url": e.baseUrl,
@@ -392,17 +392,17 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], A = "api-k
         "input-class": e.inputClass,
         "error-message-class": e.errorMessageClass,
         "button-label": e.registrationButtonLabel,
-        onApiKeyChange: i
+        onApiKeyChange: u
       }, null, 8, ["product-name", "base-url", "button-class", "label-class", "input-class", "error-message-class", "button-label"])),
       l("div", W, [
         y.value ? (r(), a("p", X, [
-          u[0] || (u[0] = E(" Don't have an account? ", -1)),
+          i[0] || (i[0] = E(" Don't have an account? ", -1)),
           l("button", {
             onClick: g,
             class: n(e.linkClass)
           }, b(e.registrationButtonLabel), 3)
         ])) : (r(), a("p", Z, [
-          u[1] || (u[1] = E(" Do you have an account? ", -1)),
+          i[1] || (i[1] = E(" Do you have an account? ", -1)),
           l("button", {
             onClick: g,
             class: n(e.linkClass)
@@ -468,21 +468,21 @@ const T = { class: "mb-4" }, P = { class: "mb-6" }, F = ["disabled"], A = "api-k
   },
   emits: [L],
   setup(e, { emit: $ }) {
-    const f = e, y = $, i = C(""), g = C(!0), d = (u) => {
-      i.value = u.key, localStorage.setItem(f.keyName, i.value), g.value = !1, y(L, i.value);
+    const f = e, y = $, u = C(""), g = C(!0), d = (i) => {
+      u.value = i.key, localStorage.setItem(f.keyName, u.value), g.value = !1, y(L, i.key);
     };
     return U(() => {
-      i.value = localStorage.getItem(f.keyName);
-      const u = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-      i.value && u.test(i.value) ? (g.value = !1, y(L, i.value)) : g.value = !0;
-    }), (u, c) => g.value ? (r(), M(_, {
+      u.value = localStorage.getItem(f.keyName);
+      const i = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+      u.value && i.test(u.value) ? (g.value = !1, y(L, u.value)) : g.value = !0;
+    }), (i, c) => g.value ? (r(), M(_, {
       key: 1,
       "product-name": e.productName,
       "base-url": e.baseUrl,
       "input-class": "w-full bg-white px-3 py-3 text-2xl border border-gray-400 rounded-md focus:outline-none focus:ring-2",
       "button-class": "w-full mt-6 text-white text-2xl bg-red-600 disabled:bg-red-400 hover:bg-red-700 focus:bg-red-700 font-semibold py-3 rounded-md shadow-none transition-colors duration-150",
       onApiKeyChange: d
-    }, null, 8, ["product-name", "base-url"])) : D(u.$slots, "default", { key: 0 });
+    }, null, 8, ["product-name", "base-url"])) : D(i.$slots, "default", { key: 0 });
   }
 };
 export {

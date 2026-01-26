@@ -73,7 +73,7 @@ const apiKeyChange = (obj) => {
     key.value = obj.key
     localStorage.setItem(props.keyName, key.value)
     isUnregistered.value = false
-    emit(KEY_CHANGE_EMIT, key.value)
+    emit(KEY_CHANGE_EMIT, obj.key)
 }
 
 onMounted(() => {
