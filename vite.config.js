@@ -22,6 +22,8 @@ export default defineConfig({
         globals: {
           vue: 'Vue',
           axios: 'axios',
+          '@vuelidate/core': 'VuelidateCore',
+          '@vuelidate/validators': 'VuelidateValidators',
         },
       },
     },
